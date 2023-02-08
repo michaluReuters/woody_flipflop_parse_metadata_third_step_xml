@@ -2,14 +2,14 @@ import json
 import os
 import boto3 as boto3
 from aws_lambda_powertools import Logger
-from domain.utils.utils import prepare_data
+from domain.utils.utils import prepare_data, prepare_request_body
 
 logger = Logger()
 client = boto3.client('events')
 s3_client = boto3.client("s3")
 
 
-@logger.inject_lambda_context()
+@logger.inject_lambda_context(log_event=True)
 def handler(event, context):
     dict_event = event['detail']
     name = dict_event['file_name']
@@ -22,9 +22,12 @@ def handler(event, context):
 
     required_fields = prepare_data(file_content, prefix)
 
-    dict_event["parsed_data"] = required_fields
+    for k, v in required_fields.items():
+        dict_event[k] = v
 
-    data_str = json.dumps(dict_event)
+    result = prepare_request_body(prefix, dict_event)
+
+    data_str = json.dumps(result)
 
     entry = {
         "Source": "new-ppe-sonyhivemetadata-step3-complete",

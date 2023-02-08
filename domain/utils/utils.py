@@ -16,6 +16,37 @@ def prepare_data(xml_content, prefix):
     return list_of_required_values
 
 
+def prepare_request_body(prefix, data):
+    call_configuration = get_hive_api_structure(prefix)
+
+    single_values = [k for k in call_configuration.keys() if type(call_configuration[k]) == str]
+    multiple_values = [(k, list(call_configuration[k].keys())) for k in call_configuration.keys() if
+                       type(call_configuration[k]) == dict]
+
+    result = {}
+    for i in single_values:
+        logger.info(call_configuration[i])
+        result[i] = data[call_configuration[i]]
+
+    for i in multiple_values:
+        temp = {}
+        for j in i[1]:
+            temp[j] = data[call_configuration[i[0]][j]]
+        result[i[0]] = temp
+
+    return result
+
+
+def get_hive_api_structure(prefix):
+    configuration_prefixes = appconfig.get_hosted_configuration_version(
+        ApplicationId=os.environ.get('APP_CONFIG_APP_ID'),
+        ConfigurationProfileId=os.environ.get(f'APP_CONFIG_{prefix.replace("-", "_").upper()}_HIVE_API_CALL_ID'),
+        VersionNumber=int(os.environ.get(f'APP_CONFIG_{prefix.replace("-", "_").upper()}_HIVE_API_CALL_VERSION'))
+    )['Content'].read().decode('utf-8')
+
+    return json.loads(configuration_prefixes)
+
+
 def call_for_required_fields(prefix):
     configuration_prefixes = appconfig.get_hosted_configuration_version(
         ApplicationId=os.environ.get('APP_CONFIG_APP_ID'),
