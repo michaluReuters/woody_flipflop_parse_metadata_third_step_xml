@@ -2,10 +2,14 @@ import json
 import os
 import boto3
 from aws_lambda_powertools import Logger
+from botocore.exceptions import ClientError
+
 from domain.utils.xml_handler import extract_value_from_xml
 
 logger = Logger()
 appconfig = boto3.client('appconfig')
+s3_bucket = boto3.resource("s3")
+s3_bucket_name = os.environ.get("S3_BUCKET_NAME")
 
 
 def prepare_data(xml_content, prefix):
@@ -26,7 +30,10 @@ def prepare_request_body(prefix, data):
     result = {}
     for i in single_values:
         logger.info(call_configuration[i])
-        result[i] = data[call_configuration[i]]
+        if i == "name":
+            result[i] = data[remove_special_characters(call_configuration[i])]
+        else:
+            result[i] = data[call_configuration[i]]
 
     for i in multiple_values:
         temp = {}
@@ -37,6 +44,27 @@ def prepare_request_body(prefix, data):
     return result
 
 
+def file_in_s3_bucket(file_name_sns, prefix) -> bool:
+    """
+    Checks if specified file exists in s3 bucket
+
+    :param:
+        file_name_sns: file that needs to be checked
+
+    :return:
+        bool: status
+    """
+
+    try:
+        logger.info(f"Looking for a file in bucket: {file_name_sns} and prefix: {prefix}")
+        s3_bucket.Object(s3_bucket_name, f"{prefix}/{file_name_sns}.xml").load()
+        logger.info(f"File found in bucket!")
+    except ClientError:
+        logger.error(f"File not found in bucket:{prefix}/{file_name_sns}")
+        return False
+    return True
+
+
 def get_hive_api_structure(prefix):
     configuration_prefixes = appconfig.get_hosted_configuration_version(
         ApplicationId=os.environ.get('APP_CONFIG_APP_ID'),
@@ -45,6 +73,22 @@ def get_hive_api_structure(prefix):
     )['Content'].read().decode('utf-8')
 
     return json.loads(configuration_prefixes)
+
+
+def remove_special_characters(phrase: str) -> str:
+    """
+    This function removes unnecessary emojis and illegal characters from phrase
+
+    :param:
+        phrase: sentence that needs to be checked for special characters
+
+    :return:
+        str : without special characters
+    """
+    all_words = phrase.split()
+    result = ["".join(ch for ch in word if ch.isalnum()) for word in all_words]
+    words = (" ".join(result)).split()
+    return " ".join(words)
 
 
 def call_for_required_fields(prefix):
