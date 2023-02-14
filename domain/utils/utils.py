@@ -13,6 +13,19 @@ s3_bucket_name = os.environ.get("S3_BUCKET_NAME")
 
 
 def prepare_data(xml_content, prefix):
+    """
+    This function prepares data from an XML content by calling the required fields from a configuration and extracting values from the XML content.
+
+    :param:
+        xml_content (str): The XML content to extract values from.
+        prefix (str): The prefix used to identify the configuration in Parameter Store.
+
+    :return:
+        dict: A dictionary containing the extracted values, where each key is the key from the configuration and each value is the extracted value from the XML content.
+
+    :raises:
+        KeyError: If a key in the configuration does not exist in the XML content.
+    """
     required_fields = call_for_required_fields(prefix)
     list_of_required_values = {v: (extract_value_from_xml(xml_content, k)) for (k, v) in
                                required_fields.items()}
@@ -21,6 +34,19 @@ def prepare_data(xml_content, prefix):
 
 
 def prepare_request_body(prefix, data):
+    """
+    This function prepares data from a JSON string by calling a configuration and extracting values from the JSON string.
+
+    :param:
+        data (dict): The JSON string to extract values from, represented as a dictionary.
+        prefix (str): The prefix used to identify the configuration in Parameter Store.
+
+    :returns:
+        dict: A dictionary containing the extracted values, where each key is the key from the configuration and each value is the extracted value from the JSON string.
+
+    :raises:
+        KeyError: If a key in the configuration does not exist in the JSON string.
+    """
     call_configuration = get_hive_api_structure(prefix)
 
     single_values = [k for k in call_configuration.keys() if type(call_configuration[k]) == str]
@@ -66,6 +92,18 @@ def file_in_s3_bucket(file_name_sns, prefix) -> bool:
 
 
 def get_hive_api_structure(prefix):
+    """
+    This function retrieves the Hive API structure for a given prefix using AWS Systems Manager Parameter Store.
+
+    :param:
+        prefix (str): The prefix used to identify the Hive API structure in Parameter Store.
+
+    :returns:
+        dict: A dictionary representation of the Hive API structure.
+
+    :raises:
+        KeyError: If the required environment variables are not set.
+    """
     configuration_prefixes = appconfig.get_hosted_configuration_version(
         ApplicationId=os.environ.get('APP_CONFIG_APP_ID'),
         ConfigurationProfileId=os.environ.get(f'APP_CONFIG_{prefix.replace("-", "_").upper()}_HIVE_API_CALL_ID'),
@@ -92,6 +130,18 @@ def remove_special_characters(phrase: str) -> str:
 
 
 def call_for_required_fields(prefix):
+    """
+    This function retrieves the required fields for a configuration with a given prefix using AWS Systems Manager Parameter Store.
+
+    Args:
+    prefix (str): The prefix used to identify the configuration in Parameter Store.
+
+    Returns:
+    dict: A dictionary where each key represents the source field and each value represents the destination field.
+
+    Raises:
+    KeyError: If the required environment variables are not set.
+    """
     configuration_prefixes = appconfig.get_hosted_configuration_version(
         ApplicationId=os.environ.get('APP_CONFIG_APP_ID'),
         ConfigurationProfileId=os.environ.get(f'APP_CONFIG_{prefix.replace("-", "_").upper()}_ID'),
