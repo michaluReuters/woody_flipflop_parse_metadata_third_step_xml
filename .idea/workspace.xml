@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d613b673-402c-40a6-9308-3a0b70a05ce2" name="Changes" comment="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;corrected logic">
+    <list default="true" id="d613b673-402c-40a6-9308-3a0b70a05ce2" name="Changes" comment="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;removed prefix from dict">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lambda.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambda.py" afterDir="false" />
     </list>
@@ -150,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676388942913</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;removed prefix from dict">
+      <created>1676389631259</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676389631259</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -169,6 +176,7 @@
     <MESSAGE value="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;adds file check" />
     <MESSAGE value="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;adds docstring" />
     <MESSAGE value="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;corrected logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;corrected logic" />
+    <MESSAGE value="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;removed prefix from dict" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;removed prefix from dict" />
   </component>
 </project>

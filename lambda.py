@@ -12,7 +12,7 @@ s3_client = boto3.client("s3")
 @logger.inject_lambda_context(log_event=True)
 def handler(event, context):
     dict_event = event['detail']
-    name = dict_event['file_name']
+    name = dict_event['name']
     prefix = dict_event['prefix']
 
     if not file_in_s3_bucket(name, prefix):
