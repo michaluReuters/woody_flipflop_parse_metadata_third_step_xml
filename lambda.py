@@ -27,7 +27,7 @@ def handler(event, context):
     required_fields = prepare_data(file_content, prefix)
 
     dict_event.update(required_fields)
-
+    dict_event.pop("prefix")
     data_str = json.dumps(dict_event)
 
     entry = {
