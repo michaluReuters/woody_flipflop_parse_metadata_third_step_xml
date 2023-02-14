@@ -33,43 +33,6 @@ def prepare_data(xml_content, prefix):
     return list_of_required_values
 
 
-def prepare_request_body(prefix, data):
-    """
-    This function prepares data from a JSON string by calling a configuration and extracting values from the JSON string.
-
-    :param:
-        data (dict): The JSON string to extract values from, represented as a dictionary.
-        prefix (str): The prefix used to identify the configuration in Parameter Store.
-
-    :returns:
-        dict: A dictionary containing the extracted values, where each key is the key from the configuration and each value is the extracted value from the JSON string.
-
-    :raises:
-        KeyError: If a key in the configuration does not exist in the JSON string.
-    """
-    call_configuration = get_hive_api_structure(prefix)
-
-    single_values = [k for k in call_configuration.keys() if type(call_configuration[k]) == str]
-    multiple_values = [(k, list(call_configuration[k].keys())) for k in call_configuration.keys() if
-                       type(call_configuration[k]) == dict]
-
-    result = {}
-    for i in single_values:
-        logger.info(call_configuration[i])
-        if i == "name":
-            result[i] = data[remove_special_characters(call_configuration[i])]
-        else:
-            result[i] = data[call_configuration[i]]
-
-    for i in multiple_values:
-        temp = {}
-        for j in i[1]:
-            temp[j] = data[call_configuration[i[0]][j]]
-        result[i[0]] = temp
-
-    return result
-
-
 def file_in_s3_bucket(file_name_sns, prefix) -> bool:
     """
     Checks if specified file exists in s3 bucket
