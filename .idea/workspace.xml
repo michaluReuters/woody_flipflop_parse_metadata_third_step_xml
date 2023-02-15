@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d613b673-402c-40a6-9308-3a0b70a05ce2" name="Changes" comment="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;corrected name">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/third_step.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/utils/xml_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain/utils/xml_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +42,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/domain/utils" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
     </key>
   </component>
   <component name="RunManager" selected="Python.test">
@@ -164,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676390937774</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;corrected name">
+      <created>1676455384485</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1676455384485</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

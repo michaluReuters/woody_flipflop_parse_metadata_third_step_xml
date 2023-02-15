@@ -54,28 +54,6 @@ def file_in_s3_bucket(file_name_sns, prefix) -> bool:
     return True
 
 
-def get_hive_api_structure(prefix):
-    """
-    This function retrieves the Hive API structure for a given prefix using AWS Systems Manager Parameter Store.
-
-    :param:
-        prefix (str): The prefix used to identify the Hive API structure in Parameter Store.
-
-    :returns:
-        dict: A dictionary representation of the Hive API structure.
-
-    :raises:
-        KeyError: If the required environment variables are not set.
-    """
-    configuration_prefixes = appconfig.get_hosted_configuration_version(
-        ApplicationId=os.environ.get('APP_CONFIG_APP_ID'),
-        ConfigurationProfileId=os.environ.get(f'APP_CONFIG_{prefix.replace("-", "_").upper()}_HIVE_API_CALL_ID'),
-        VersionNumber=int(os.environ.get(f'APP_CONFIG_{prefix.replace("-", "_").upper()}_HIVE_API_CALL_VERSION'))
-    )['Content'].read().decode('utf-8')
-
-    return json.loads(configuration_prefixes)
-
-
 def remove_special_characters(phrase: str) -> str:
     """
     This function removes unnecessary emojis and illegal characters from phrase
