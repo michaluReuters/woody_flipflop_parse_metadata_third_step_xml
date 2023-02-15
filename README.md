@@ -1,4 +1,4 @@
-# woody_flipflop_parse_metadata_second_step
+# woody_flipflop_parse_metadata_third_step_xml
 
 This repository represents third step in gathering, extracting and
 updating metadata in sonyhive api platform. Inputs might be coming 
