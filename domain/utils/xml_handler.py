@@ -14,7 +14,7 @@ def extract_value_from_xml(xml_data, tag_path):
 
     """
     root = ET.fromstring(xml_data)
-    element = root.find(tag_path)
+    element = root.find(f"./{tag_path.replace('.', '/')}")
     if element is not None:
         return element.text
     else:
