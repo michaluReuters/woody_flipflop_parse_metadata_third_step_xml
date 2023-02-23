@@ -7,6 +7,7 @@ from domain.utils.utils import prepare_data, file_in_s3_bucket
 logger = Logger()
 client = boto3.client('events')
 s3_client = boto3.client("s3")
+LAMBDA_NAME = os.environ["AWS_LAMBDA_FUNCTION_NAME"]
 
 
 @logger.inject_lambda_context(log_event=True)
@@ -31,8 +32,8 @@ def handler(event, context):
     data_str = json.dumps(dict_event)
 
     entry = {
-        "Source": "new-ppe-sonyhivemetadata-step3-complete",
-        "Resources": ["new-ppe-sh-sonyhive-metadata-import-step3-json-lambda"],
+        "Source": f"{LAMBDA_NAME}-complete",
+        "Resources": [LAMBDA_NAME],
         "DetailType": "metadata-step-complete",
         'Detail': data_str
     }
