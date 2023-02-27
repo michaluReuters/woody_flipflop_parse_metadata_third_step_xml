@@ -99,5 +99,5 @@ EV for this step represent configurations id's and names:
 Value
 - APP_CONFIG_APP_ID
 - APP_CONFIG_{PREFIX}_ID
-- APP_CONFIG_{PREFIX}_VERSION
+- APP_ENVIRONMENT
 - S3_BUCKET_NAME

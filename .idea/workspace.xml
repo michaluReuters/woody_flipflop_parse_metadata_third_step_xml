@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d613b673-402c-40a6-9308-3a0b70a05ce2" name="Changes" comment="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;adds environment variables">
+    <list default="true" id="d613b673-402c-40a6-9308-3a0b70a05ce2" name="Changes" comment="ADO 517004 - Metadata Import - AppConfig ClientConfigurationVersion Latest&#10;&#10;ADO 517006 - Metadata Import - AppConfig Environment&#10;&#10;changes entry">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/domain/utils/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambda.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +194,21 @@
       <option name="project" value="LOCAL" />
       <updated>1677156973546</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="ADO 517004 - Metadata Import - AppConfig ClientConfigurationVersion Latest&#10;&#10;ADO 517006 - Metadata Import - AppConfig Environment&#10;&#10;adds changes to logic">
+      <created>1677487861262</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1677487861262</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ADO 517004 - Metadata Import - AppConfig ClientConfigurationVersion Latest&#10;&#10;ADO 517006 - Metadata Import - AppConfig Environment&#10;&#10;changes entry">
+      <created>1677490559193</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1677490559193</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -220,6 +232,8 @@
     <MESSAGE value="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;adds docs" />
     <MESSAGE value="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;corrected docs" />
     <MESSAGE value="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;adds environment variables" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADO 509303 - [VIC]  - Metadata Import Step 3- Parse Metadata - Lambda&#10;&#10;adds environment variables" />
+    <MESSAGE value="ADO 517004 - Metadata Import - AppConfig ClientConfigurationVersion Latest&#10;&#10;ADO 517006 - Metadata Import - AppConfig Environment&#10;&#10;adds changes to logic" />
+    <MESSAGE value="ADO 517004 - Metadata Import - AppConfig ClientConfigurationVersion Latest&#10;&#10;ADO 517006 - Metadata Import - AppConfig Environment&#10;&#10;changes entry" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADO 517004 - Metadata Import - AppConfig ClientConfigurationVersion Latest&#10;&#10;ADO 517006 - Metadata Import - AppConfig Environment&#10;&#10;changes entry" />
   </component>
 </project>
