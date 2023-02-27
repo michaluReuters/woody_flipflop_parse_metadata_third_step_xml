@@ -32,8 +32,8 @@ def handler(event, context):
     data_str = json.dumps(dict_event)
 
     entry = {
-        "Source": "step3-complete",
-        "Resources": ["metadata-import-step3"],
+        "Source": f"{LAMBDA_NAME}-complete",
+        "Resources": [LAMBDA_NAME],
         "DetailType": "metadata-step-complete",
         'Detail': data_str
     }
